@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Mon application Symfony{% endblock %}</title>
+    {% block css %}
+        <link rel="stylesheet" href="{{ asset('bower_assets/bootstrap/dist/css/bootstrap.css') }}">
+    {% endblock %}
+</head>
+<body class="container-fluid">
+
+{% block navigation %}
+{%  include 'fragments/base_navigation.html.twig' %}
+{% endblock %}
+
+<div class="row justify-content-center">
+    <section class="col-md-7">
+    {% block content %}{% endblock %}
+    </section>
+    <aside class="col-md-3">
+        {% block aside %}{% endblock %}
+    </aside>
+</div>
+
+{% block js %}
+<script src="{{ asset('bower_assets/jquery/dist/jquery.js') }}"></script>
+    <script src="{{ asset('bower_assets/bootstrap/dist/js/bootstrap.js') }}"></script>
+{% endblock %}
+
+</body>
+</html>

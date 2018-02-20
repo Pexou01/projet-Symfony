@@ -1,0 +1,10 @@
+{% extends "base_layout.html.twig" %}
+
+{% block content %}
+<h1>Hello {{  firstName  }} {{ name }} vous avez {{ age }} ans</h1>
+
+<h2>{{ message }}</h2>
+
+<h3>Nous sommes le {{ now | date('d/m/Y')}}</h3>
+    <a href="{{ path('fruitpage') }}">Lien vers les fruits</a>
+{% endblock %}

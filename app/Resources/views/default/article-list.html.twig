@@ -1,0 +1,34 @@
+{% extends 'base_layout.html.twig' %}
+
+{% block content %}
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Titre</th>
+        <th>Catégorie</th>
+        <th>Action</th>
+    </tr>
+    {% for article in articleList %}
+    <tr>
+        <td><a href="{{ path('article_details', {id:article.id}) }}">{{ article.title }}</a></td>
+        <td><a href="{{ path('article_list',{page:1, category:article.category} ) }}">{{ article.category }}</a></td>
+        <td><a href="{{ path('app_default_deletearticle', {id:article.id}) }}">Supr</a> </td>
+    </tr>
+        {% else %}
+        <h2>Aucun résultat pour cette requéte</h2>
+    {% endfor %}
+</table>
+
+    <ul class="pagination">
+        {% for pageNumber in 1..nbPages %}
+        <li class="page-item {{ currentPage==pageNumber?'active':'' }}">
+            <a href="{{ path('article_list', {page:pageNumber, category:category}) }}" class="page-link active">{{ pageNumber }} </a>
+
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+

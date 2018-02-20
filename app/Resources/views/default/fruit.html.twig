@@ -1,0 +1,36 @@
+{% extends "base_layout.html.twig" %}
+
+{% block content %}
+ {% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/fruit.css') }}">
+    {% endblock %}
+    <ul class="fruit">
+        {% for fruit in fruitList %}
+            <li>
+                {% if loop.index is divisible by(2) %}
+               <strong>{{ loop.index }} {{ fruit }}</strong>
+               {% else %}
+                {{ loop.index }} - {{ fruit }}
+               {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <ul class="foodList">
+        {% for food in foodList %}
+            <li>
+                {{ food.name }} est de type {{ food.type }} et c'est
+                {% if food.edible == true %}
+                    bon
+                {% else %}
+                     pas bon
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+    <a href="{{ path ('hellopage', {age:'18'}) }}">Lien vers les fruits</a>
+{% endblock %}
